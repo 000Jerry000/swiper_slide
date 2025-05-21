@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sample_swiper_slide</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <style>
+      .container {
+        max-width: 600px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 50px;
+      }
+
+      .swiper + .swiper {
+        margin-top: 20px;
+      }
+
+      .swiper-slide {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .swiper-slide._red {
+        background-color: red;
+      }
+
+      .swiper-slide._blue {
+        background-color: blue;
+      }
+
+      .swiper-slide._orange {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="swiper1" class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide _red">SLIDE 1-1</div>
+          <div class="swiper-slide _blue">SLIDE1-2</div>
+          <div class="swiper-slide _orange">SLIDE1-3</div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+      <div id="swiper2" class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide _red">SLIDE2-1</div>
+          <div class="swiper-slide _blue">SLIDE2-2</div>
+          <div class="swiper-slide _orange">SLIDE2-3</div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const swiper1 = new Swiper("#swiper1", {
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      //オートプレイ
+      autoplay: {
+        delay: 2000,
+      },
+    });
+    const swiper2 = new Swiper("#swiper2", {
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    swiper1.controller.control = [swiper2];
+    swiper2.controller.control = [swiper1];
+  </script>
+</html>
